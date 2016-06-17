@@ -7,6 +7,7 @@ import (
 )
 
 const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+const defaultLength = 64
 
 // generatePassword returns a random string of length 6
 func generatePassword(n int) string {
@@ -22,7 +23,7 @@ func generatePassword(n int) string {
 }
 
 func main() {
-	length := flag.Int("length", 32, "password length")
+	length := flag.Int("length", defaultLength, "password length")
 	flag.Parse()
 	fmt.Printf("%s\n", generatePassword(*length))
 }
