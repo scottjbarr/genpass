@@ -7,7 +7,7 @@ A random password generator.
     $ genpass -h
     Usage of genpass:
       -length int
-            password length (default 32)
+            password length (default 64)
 
     $ genpass
     cxpTW4vaddQqiFhmM0hrhXggNHqPtNByDM8MN1pVWXzbVXu2U5Po9djTTcDnK0mU
