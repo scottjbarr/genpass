@@ -27,7 +27,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	length := r.URL.Query().Get("length")
 
 	// parse the length param
-	l, _ := strconv.ParseInt(length, 64, 10)
+	l, _ := strconv.ParseInt(length, 10, 64)
 	if l == 0 {
 		l = 64
 	}
