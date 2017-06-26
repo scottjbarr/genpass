@@ -14,23 +14,28 @@ all: clean build
 deps:
 	go get -t ./...
 
-dist: test
-	mkdir -p dist
+dist: test prepare
 	$(GO_DIST) -o dist/genpass-http cmd/genpass-http/main.go
 
-build: test
+build: test prepare
+	$(GO_BUILD) -o dist/genpass-http cmd/genpass-http/main.go
+
+prepare:
+	mkdir -p dist
 	mkdir -p build
-	$(GO_BUILD) -o build/queue-foo-publish cmd/queue-foo-publish/main.go
-	$(GO_BUILD) -o build/queue-foo-receive cmd/queue-foo-receive/main.go
 
 test:
 	$(GO) test
+
+# See https://devcenter.heroku.com/articles/container-registry-and-runtime
+deploy: docker
+	heroku container:push web
 
 docker: dist
 	docker build -t genpass-http .
 
 docker-run:
-	docker run -p5000:5000 -e PORT=5000 genpass-http
+	docker run -p 5000:5000 -e PORT=5000 genpass-http
 
 clean:
 	rm -rf build dist
