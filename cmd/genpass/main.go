@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	length := flag.Int("length", genpass.DefaultLength, "password length")
+	length := flag.Int64("length", genpass.DefaultLength, "password length")
 	flag.Parse()
 
 	fmt.Printf("%s\n", genpass.Generate(*length))
