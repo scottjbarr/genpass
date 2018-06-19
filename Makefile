@@ -36,6 +36,7 @@ run:
 # See https://devcenter.heroku.com/articles/container-registry-and-runtime
 deploy: docker
 	heroku container:push web
+	heroku container:release web
 
 docker: dist
 	docker build -t genpass-http .
